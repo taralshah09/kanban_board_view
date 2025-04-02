@@ -1,0 +1,25 @@
+@import url("https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap");
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Outfit", serif;
+}
+
+.task {
+  position: relative;
+}
+
+.task-icons {
+  display: flex;
+  opacity: 0;
+  transition: opacity 0.2s ease-in-out;
+  color: gray;
+}
+
+.task:hover .task-icons {
+  opacity: 1;
+}
