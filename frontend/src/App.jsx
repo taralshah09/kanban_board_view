@@ -12,7 +12,7 @@ import io from "socket.io-client"
 import { useEffect } from 'react'
 // const socket = io.connect("http://localhost:3000", { credentials: true })
 
-export const socket = io.connect("http://localhost:3000", { withCredentials: true });
+export const socket = io.connect("https://kanban-board-view-backend.onrender.com/", { withCredentials: true });
 function App() {
   const [authUser, setAuthUser] = useAuth()
   const location = useLocation()
