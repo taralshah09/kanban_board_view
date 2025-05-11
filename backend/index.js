@@ -14,8 +14,10 @@ const server = http.createServer(app);
 import { Server } from "socket.io";
 
 // ENV
-const backend_url = process.env.BACKEND_URL;
-const frontend_url = process.env.FRONTEND_URL;
+const backend_url =
+  process.env.BACKEND_URL || "https://kanban-board-view-backend.onrender.com/";
+const frontend_url =
+  process.env.FRONTEND_URL || "https://kanban-board-view-nu.vercel.app/";
 const PORT = process.env.PORT || 3000;
 
 // Socket.io server with CORS for both local and deployed frontend
