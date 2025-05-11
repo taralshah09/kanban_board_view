@@ -14,7 +14,7 @@ const server = http.createServer(app);
 import { Server } from "socket.io";
 const io = new Server(server, {
   cors: {
-    origin: "http://localhost:5173",
+    origin: "https://kanban-board-view-backend.onrender.com/",
     methods: ["GET", "POST"],
     credentials: true,
   },
@@ -24,7 +24,7 @@ mongoose
   .connect(process.env.MONGO_URL)
   .then(() => console.log("DB connected!"))
   .catch((err) => console.log("Error : ", err.message));
-const PORT = process.env.PORT;
+const PORT = process.env.PORT || 3000;
 
 // Middlewares
 app.use(express.json());
