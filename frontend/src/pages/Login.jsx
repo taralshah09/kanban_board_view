@@ -1,80 +1,84 @@
 import axios from 'axios';
-import React, { useState } from 'react'
-import { Link, useNavigate } from 'react-router-dom'
+import React, { useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthProvider';
 
-
 const Login = () => {
-    const navigate = useNavigate();
+  const navigate = useNavigate();
+  const [authUser, setAuthUser] = useAuth();
 
-    // State hooks for form inputs
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
-    const [authUser, setAuthUser] = useAuth()
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
 
-    const handleLogin = async (e) => {
-        e.preventDefault();
+  const handleLogin = async (e) => {
+    e.preventDefault();
 
-        const userData = { email, password };  // Prepare data as a JSON object
-        try {
-            const response = await axios.post(
-                "http://localhost:3000/users/login",
-                userData,
-                {
-                    withCredentials: true,
-                    headers: {
-                        "Content-Type": "application/json",
-                    },
-                }
-            );
-            setAuthUser(response.data.user);
-            localStorage.setItem("Kanban", JSON.stringify(response.data.user));
-
-            // console.log(response.data); // Log the response data if needed
-            setEmail("");
-            setPassword("");
-            navigate("/conversation-home");
-
-        } catch (error) {
-            console.error("Registration failed:", error.response?.data || error.message);
-            alert("Error: " + (error.response?.data?.message || error.message));
+    try {
+      const response = await axios.post(
+        'http://localhost:3000/users/login',
+        { email, password },
+        {
+          withCredentials: true,
+          headers: {
+            'Content-Type': 'application/json',
+          },
         }
-    };
-    return (
-        <div>
-            <div className='min-h-screen w-[100%] flex items-center justify-center bg-gray-100'>
-                <div className='w-full max-w-md shadow-md bg-white p-5 rounded-md'>
-                    <form action="" onSubmit={handleLogin}>
-                        <h2 className="text-3xl text-center font-bold">Kanban<span className="text-blue-500">App</span></h2>
-                        <h1 className="text-xl font-semibold mb-6">Login</h1>
+      );
 
+      setAuthUser(response.data.user);
+      localStorage.setItem('Kanban', JSON.stringify(response.data.user));
+      setEmail('');
+      setPassword('');
+      navigate('/conversation-home');
+    } catch (error) {
+      console.error('Login failed:', error.response?.data || error.message);
+      alert('Error: ' + (error.response?.data?.message || error.message));
+    }
+  };
 
-                        <div className='my-2'>
-                            <input type="email" className="w-full p-2 mb-4 border rounded-md" value={email} placeholder='Your email' onChange={(e) => setEmail(e.target.value)} />
-                        </div>
+  return (
+    <div className="min-h-screen flex items-center justify-center bg-[#121212]">
+      <div className="w-full max-w-md bg-[#1E1E2F] text-white shadow-2xl rounded-2xl p-8 backdrop-blur-sm animate-fadeIn">
+        <form onSubmit={handleLogin}>
+          <h2 className="text-3xl text-center font-extrabold mb-2">
+            Kanban<span className="text-blue-400">App</span>
+          </h2>
+          <h3 className="text-lg text-gray-300 mb-6 text-center">Login to your dashboard</h3>
 
-                        <div className='my-2'>
-                            <input type="password" className="w-full p-2 mb-4 border rounded-md" value={password} placeholder='Password' onChange={(e) => setPassword(e.target.value)} />
-                        </div>
+          <input
+            type="email"
+            className="w-full px-4 py-2 mb-4 rounded-md bg-[#2C2C3A] border border-gray-700 text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
+            placeholder="Email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+          />
 
+          <input
+            type="password"
+            className="w-full px-4 py-2 mb-4 rounded-md bg-[#2C2C3A] border border-gray-700 text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
+            placeholder="Password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+          />
 
-                        <p className="text-center mb-4">
-                            Don't have an account?{" "}
-                            <Link to={"/register"} className="text-blue-600">
-                                Create One
-                            </Link>
-                        </p>
-                        <button
-                            type="submit"
-                            className="w-full p-2 bg-blue-500 hover:bg-blue-800 duration-300 rounded-md text-white"
-                        >
-                            Login
-                        </button>
-                    </form>
-                </div>
-            </div>
-        </div>
-    )
-}
+          <p className="text-sm text-center text-gray-400 mb-4">
+            Don't have an account?{' '}
+            <Link to="/register"
+             className="text-blue-400 hover:underline">
+              Register
+            </Link>
+          </p>
 
-export default Login
+          <button
+            type="submit"
+            className="w-full py-2 bg-blue-500 hover:bg-blue-600 transition-all duration-300 rounded-md text-white font-semibold"
+          >
+            Login
+          </button>
+        </form>
+      </div>
+    </div>
+  );
+};
+
+export default Login;

@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthProvider';
 
+
 const Register = () => {
     const navigate = useNavigate();
 
@@ -47,12 +48,13 @@ const Register = () => {
     };
 
     return (
-        <div className="min-h-screen w-[100%] flex items-center justify-center bg-gray-100">
-            <div className="w-full max-w-md shadow-md bg-white p-5 rounded-md">
+        <div className="min-h-screen flex items-center justify-center bg-[#121212]">
+            <div className="w-full max-w-md bg-[#1E1E2F] text-white shadow-2xl rounded-2xl p-8 backdrop-blur-sm animate-fadeIn">
                 <form onSubmit={handleRegister}>
-                    <h2 className="text-3xl text-center font-bold">Kanban<span className="text-blue-500">App</span></h2>
-
-                    <h1 className="text-xl font-semibold mb-6">Register</h1>
+                    <h2 className="text-3xl text-center font-extrabold mb-2">
+                        Kanban<span className="text-blue-400">App</span>
+                    </h2>
+                    <h3 className="text-lg text-gray-300 mb-6 text-center">Register yourself</h3>
 
                     {/* Name Input */}
                     <div className="my-2">
@@ -60,7 +62,7 @@ const Register = () => {
                             type="text"
                             value={name}
                             onChange={(e) => setName(e.target.value)}
-                            className="w-full p-2 mb-4 border rounded-md"
+                            className="w-full px-4 py-2 mb-4 rounded-md bg-[#2C2C3A] border border-gray-700 text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
                             placeholder="Your name"
                         />
                     </div>
@@ -71,7 +73,7 @@ const Register = () => {
                             type="email"
                             value={email}
                             onChange={(e) => setEmail(e.target.value)}
-                            className="w-full p-2 mb-4 border rounded-md"
+                            className="w-full px-4 py-2 mb-4 rounded-md bg-[#2C2C3A] border border-gray-700 text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
                             placeholder="Your email"
                         />
                     </div>
@@ -82,15 +84,15 @@ const Register = () => {
                             type="password"
                             value={password}
                             onChange={(e) => setPassword(e.target.value)}
-                            className="w-full p-2 mb-4 border rounded-md"
+                            className="w-full px-4 py-2 mb-4 rounded-md bg-[#2C2C3A] border border-gray-700 text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
                             placeholder="Password"
                         />
                     </div>
 
                     {/* Login Redirect */}
                     <p className="text-center mb-4">
-                        Already registered?{' '}
-                        <Link to="/login" className="text-blue-600">
+                        Already registered?{'   '}
+                        <Link to="/login" className="text-blue-400 hover:underline">
                             Login Now
                         </Link>
                     </p>
@@ -98,7 +100,7 @@ const Register = () => {
                     {/* Submit Button */}
                     <button
                         type="submit"
-                        className="w-full p-2 bg-blue-500 hover:bg-blue-800 duration-300 rounded-md text-white"
+                        className="w-full py-2 bg-blue-500 hover:bg-blue-600 transition-all duration-300 rounded-md text-white font-semibold"
                     >
                         Register
                     </button>
