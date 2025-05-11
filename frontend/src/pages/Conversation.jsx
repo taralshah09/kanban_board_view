@@ -20,12 +20,15 @@ const Conversation = () => {
     const [users, setUsers] = useState([])
     const [searchUser, setSearchUser] = useState("")
     const [authUser, setAuthUser] = useAuth()
-    let url = import.meta.env.url || "http://localhost:3000/";
+
+    // let url = import.meta.env.url || "https://kanban-board-view-backend.onrender.com/";
+    // let url = "http://localhost:3000/";
+    let url = "https://kanban-board-view-backend.onrender.com";
 
     useEffect(() => {
         const fetchConversation = async () => {
             try {
-                const res = await axios.get(url + `conversations/${id}`, { withCredentials: true });
+                const res = await axios.get(url + `/conversations/${id}`, { withCredentials: true });
                 setConversation(res.data);
             } catch (error) {
                 console.log(error);
@@ -35,28 +38,6 @@ const Conversation = () => {
 
     }, [id]);
 
-
-    useEffect(() => {
-        const fetchUsers = async () => {
-            try {
-                const res = await axios.get(url + "users/all");
-                const usersArray = res.data.users;
-
-                // Filter out users who are not already in the conversation's users array
-                const filteredUsers = usersArray.filter(user =>
-                    user._id !== conversation.createdBy._id &&
-                    !conversation.users.some(convoUser => convoUser._id === user._id)
-                );
-
-                // Update state with filtered users
-                setUsers(filteredUsers);
-            } catch (error) {
-                console.log(error.message);
-            }
-        };
-
-        fetchUsers();
-    }, [conversation, conversation?.users]);
 
 
 

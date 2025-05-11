@@ -18,7 +18,7 @@ function App() {
   const location = useLocation()
   const navigate = useNavigate("");
   // let url = "http://localhost:3000/";
-  let url = import.meta.env.url || "http://localhost:3000/";
+  let url = import.meta.env.url || "https://kanban-board-view-backend.onrender.com/";
   // Check if current path is ConversationHome or Conversation
   const showNavbar = location.pathname === '/conversation-home' || location.pathname.startsWith('/conversation')
 

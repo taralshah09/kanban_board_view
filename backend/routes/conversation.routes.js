@@ -11,19 +11,24 @@ import {
   deleteTask,
   addUserInConversation,
 } from "../controllers/conversation.controllers.js";
+
 import { authUser } from "../middlewares/users.middlewares.js";
 
 const router = express.Router();
 
-router.post("/", authUser, createConversation);
+// router.post("/", authUser, createConversation);
+router.post("/",  createConversation);
 
 router.get("/", getAllConversation);
 
-router.get("/:id", authUser, getConversation);
+// router.get("/:id", authUser, getConversation);
+router.get("/:id",  getConversation);
 
-router.put("/:id", authUser, updateConversation);
+// router.put("/:id", authUser, updateConversation);
+router.put("/:id",  updateConversation);
 
-router.delete("/:id", authUser, deleteConversation);
+// router.delete("/:id", authUser, deleteConversation);
+router.delete("/:id",  deleteConversation);
 
 router.post("/:id/boards", addBoardInconversation);
 

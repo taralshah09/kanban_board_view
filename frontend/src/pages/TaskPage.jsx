@@ -18,7 +18,7 @@ const TaskPage = () => {
     const location = useLocation();
     const navigate = useNavigate();
     const { conversation } = location.state;
-    let url = import.meta.env.url || "http://localhost:3000/";
+    let url = import.meta.env.url || "https://kanban-board-view-backend.onrender.com/";
 
     useEffect(() => {
         const fetchTask = async () => {

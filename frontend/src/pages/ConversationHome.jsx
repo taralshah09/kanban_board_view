@@ -19,7 +19,8 @@ const ConversationHome = () => {
         users: [],
         createdBy: loggedInUser._id,
     });
-    let url = import.meta.env.url || "http://localhost:3000/";
+    // let url = import.meta.env.url || "https://kanban-board-view-backend.onrender.com/";
+    let url = "http://localhost:3000/"
     const navigate = useNavigate();
 
     // Function to open modal and set selected conversation

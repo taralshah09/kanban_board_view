@@ -31,7 +31,7 @@ export const getConversation = async (req, res) => {
         },
       })
       .populate("users")
-      .populate("createdBy");
+      // .populate("createdBy");
     if (!conversation) {
       return res.status(404).json({ message: "Conversation not found" });
     }

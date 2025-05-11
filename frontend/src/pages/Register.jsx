@@ -13,7 +13,7 @@ const Register = () => {
     const [password, setPassword] = useState('');
     const [authUser, setAuthUser] = useAuth()
 
-    let url = import.meta.env.url || "http://localhost:3000/";
+    let url = import.meta.env.url || "https://kanban-board-view-backend.onrender.com/";
 
     const handleRegister = async (e) => {
         e.preventDefault();
