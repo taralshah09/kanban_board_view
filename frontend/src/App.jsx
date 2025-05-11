@@ -50,19 +50,25 @@ function App() {
   return (
     <>
       {showNavbar && (
-        <nav className="navbar bg-gray-800 text-white px-6 py-4 flex items-center justify-between">
-          <Link to="/conversation-home">
-            <h2 className="text-2xl font-semibold">Tasker</h2>
+        <nav className="bg-[#1E1E2F] text-white px-8 py-2 flex items-center justify-between shadow-md border-b border-gray-700">
+          <Link to="/conversation-home" className="hover:text-blue-400 transition-colors duration-200">
+            <p className="text-3xl text-center font-bold">
+              Kanban<span className="text-blue-400">App</span>
+            </p>
           </Link>
           <ul className="flex items-center space-x-6">
-            <li className="text-lg">{authUser?.name}</li>
+            <li className="text-lg font-medium text-gray-300">{authUser?.name}</li>
             <li>
-              <button onClick={handleLogout} className="bg-red-500 hover:bg-red-600 text-white font-medium py-2 px-4 rounded">
+              <button
+                onClick={handleLogout}
+                className="bg-red-600 hover:bg-red-700 text-white font-semibold py-2 px-4 rounded-lg shadow-sm transition-all duration-200"
+              >
                 Logout
               </button>
             </li>
           </ul>
         </nav>
+
 
 
       )}

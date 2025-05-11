@@ -83,37 +83,40 @@ const TaskPage = () => {
     };
 
     return (
-        <div className='w-full min-h-[90vh] flex items-center justify-center bg-white'>
-            <div className="relative w-[70%] min-h-[400px] mx-auto p-6 bg-white shadow-xl rounded-lg mt-8">
-                <div className='absolute right-6 '>
-                    <Link className='text-blue-500 hover:underline ' to={`/conversation/${conversationId}`}>Back to conversation</Link>
+        <div className='w-full min-h-[90vh] flex items-center justify-center bg-[#0d1117] text-white'>
+            <div className="relative w-[70%] min-h-[400px] mx-auto p-6 bg-[#161b22] shadow-2xl rounded-lg mt-8">
+                <div className='absolute right-6'>
+                    <Link className='text-[#58a6ff] hover:underline' to={`/conversation/${conversationId}`}>
+                        Back to conversation
+                    </Link>
                 </div>
+
                 <label className="block mb-4">
-                    <span className="text-gray-700">Title:</span>
+                    <span className="text-gray-300">Title:</span>
                     <input
                         type="text"
                         name="title"
                         value={task.title}
                         onChange={handleInputChange}
-                        className="bg-white text-black mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                        className="bg-[#0d1117] text-white mt-1 block w-full px-4 py-2 border border-gray-700 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
                     />
                 </label>
 
                 <label className="block mb-4">
-                    <span className="text-gray-700">Description:</span>
+                    <span className="text-gray-300">Description:</span>
                     <ReactQuill
                         value={task.description}
                         onChange={handleDescriptionChange}
-                        className="bg-white text-black mt-1 block w-full border border-gray-300 rounded-md"
+                        className="bg-white text-black mt-1 block w-full rounded-md"
                         theme="snow"
                     />
                 </label>
 
                 <label className="block mb-4">
-                    <span className="text-gray-700">Assigned To:</span>
+                    <span className="text-gray-300">Assigned To:</span>
                     <ul className="mt-1 mb-2 list-disc pl-5">
                         {task.assignedTo.map((person, index) => (
-                            <li key={index} className="text-gray-800">{person}</li>
+                            <li key={index} className="text-gray-300">{person}</li>
                         ))}
                     </ul>
                     <div className="flex items-center gap-2">
@@ -122,11 +125,11 @@ const TaskPage = () => {
                             value={newAssignedTo}
                             onChange={(e) => setNewAssignedTo(e.target.value)}
                             placeholder="Add assignee"
-                            className="bg-white text-black flex-1 px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                            className="bg-[#0d1117] text-white flex-1 px-4 py-2 border border-gray-700 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
                         />
                         <button
                             onClick={handleAddAssignee}
-                            className="px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600"
+                            className="px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-700"
                         >
                             Add
                         </button>
@@ -139,27 +142,28 @@ const TaskPage = () => {
                         name="markAsDone"
                         checked={task.markAsDone}
                         onChange={handleInputChange}
-                        className="bg-white text-black mr-2 h-4 w-4 text-blue-600 border-gray-300 rounded focus:ring-blue-500"
+                        className="mr-2 h-4 w-4 text-blue-500 bg-[#0d1117] border-gray-700 rounded focus:ring-blue-500"
                     />
-                    <span className="text-gray-700">Mark as Done</span>
+                    <span className="text-gray-300">Mark as Done</span>
                 </label>
 
                 <div className="flex gap-4">
                     <button
                         onClick={handleUpdateTask}
-                        className="w-full py-2 bg-blue-500 text-white font-semibold rounded-md hover:bg-blue-600 focus:outline-none"
+                        className="w-full py-2 bg-blue-500 text-white font-semibold rounded-md hover:bg-blue-700"
                     >
                         Update Task
                     </button>
                     <button
                         onClick={handleDeleteTask}
-                        className="w-[20%] py-2 bg-red-500 text-white font-semibold rounded-md hover:bg-red-600 focus:outline-none"
+                        className="w-[20%] py-2 bg-red-600 text-white font-semibold rounded-md hover:bg-red-700"
                     >
                         Delete Task
                     </button>
                 </div>
             </div>
         </div>
+
     );
 };
 
