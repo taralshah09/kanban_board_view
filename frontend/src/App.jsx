@@ -17,6 +17,8 @@ function App() {
   const [authUser, setAuthUser] = useAuth()
   const location = useLocation()
   const navigate = useNavigate("");
+  // let url = "http://localhost:3000/";
+  let url = import.meta.env.url || "http://localhost:3000/";
   // Check if current path is ConversationHome or Conversation
   const showNavbar = location.pathname === '/conversation-home' || location.pathname.startsWith('/conversation')
 
@@ -38,7 +40,7 @@ function App() {
 
   const handleLogout = async () => {
     try {
-      const response = await axios.post("http://localhost:3000/users/logout", {}, { withCredentials: true })
+      const response = await axios.post(url + "users/logout", {}, { withCredentials: true })
       localStorage.removeItem("Kanban")
       console.log(response.data.message)
       alert(response.data.message)

@@ -19,7 +19,7 @@ const ConversationHome = () => {
         users: [],
         createdBy: loggedInUser._id,
     });
-
+    let url = import.meta.env.url || "http://localhost:3000/";
     const navigate = useNavigate();
 
     // Function to open modal and set selected conversation
@@ -43,7 +43,7 @@ const ConversationHome = () => {
     useEffect(() => {
         const fetchConversations = async () => {
             try {
-                const res = await axios.get("http://localhost:3000/conversations", { withCredentials: true });
+                const res = await axios.get(url + "conversations", { withCredentials: true });
                 setConversations(res.data.conversations);
                 setFilteredConversations(res.data.conversations);
             } catch (error) {
@@ -78,7 +78,7 @@ const ConversationHome = () => {
     // Function to handle create conversation submission
     const handleCreateSubmit = async () => {
         try {
-            const res = await axios.post("http://localhost:3000/conversations", newConversation, { withCredentials: true });
+            const res = await axios.post(url + "conversations", newConversation, { withCredentials: true });
             setConversations([...conversations, res.data]);
             setFilteredConversations([...filteredConversations, res.data]);
             setIsCreateModalOpen(false); // Close modal after creation
@@ -106,7 +106,7 @@ const ConversationHome = () => {
                             onClick={openCreateModal}
                             className="px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-700 transition-all duration-200"
                         >
-                            Create New 
+                            Create New
                         </button>
                     </div>
                 </div>

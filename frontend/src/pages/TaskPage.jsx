@@ -18,11 +18,12 @@ const TaskPage = () => {
     const location = useLocation();
     const navigate = useNavigate();
     const { conversation } = location.state;
+    let url = import.meta.env.url || "http://localhost:3000/";
 
     useEffect(() => {
         const fetchTask = async () => {
             try {
-                const res = await axios.get(`http://localhost:3000/tasks/${taskId}`, { withCredentials: true });
+                const res = await axios.get(url + `tasks/${taskId}`, { withCredentials: true });
                 setTask({
                     ...res.data.task,
                     assignedTo: Array.isArray(res.data.task.assignedTo) ? res.data.task.assignedTo.flat() : [],
@@ -57,7 +58,7 @@ const TaskPage = () => {
     const handleUpdateTask = async () => {
         try {
             console.log("Updating task:", task);  // Log to verify task state
-            await axios.put(`http://localhost:3000/tasks/${taskId}`, task, { withCredentials: true });
+            await axios.put(url + `tasks/${taskId}`, task, { withCredentials: true });
             alert("Task updated successfully!");
             navigate(`/conversation/${conversationId}`);
         } catch (error) {
@@ -67,7 +68,7 @@ const TaskPage = () => {
 
     const handleDeleteTask = async () => {
         try {
-            await axios.delete(`http://localhost:3000/tasks/${taskId}`, { withCredentials: true });
+            await axios.delete(url + `tasks/${taskId}`, { withCredentials: true });
             alert("Task deleted successfully!");
             navigate(`/conversation/${conversationId}`);
         } catch (error) {

@@ -6,7 +6,7 @@ import { useAuth } from '../context/AuthProvider';
 const Login = () => {
   const navigate = useNavigate();
   const [authUser, setAuthUser] = useAuth();
-
+  let url = import.meta.env.url || "http://localhost:3000/";
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
@@ -15,7 +15,7 @@ const Login = () => {
 
     try {
       const response = await axios.post(
-        'http://localhost:3000/users/login',
+        url + 'users/login',
         { email, password },
         {
           withCredentials: true,
@@ -64,7 +64,7 @@ const Login = () => {
           <p className="text-sm text-center text-gray-400 mb-4">
             Don't have an account?{' '}
             <Link to="/register"
-             className="text-blue-400 hover:underline">
+              className="text-blue-400 hover:underline">
               Register
             </Link>
           </p>

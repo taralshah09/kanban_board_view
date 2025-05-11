@@ -13,6 +13,7 @@ const Register = () => {
     const [password, setPassword] = useState('');
     const [authUser, setAuthUser] = useAuth()
 
+    let url = import.meta.env.url || "http://localhost:3000/";
 
     const handleRegister = async (e) => {
         e.preventDefault();
@@ -21,7 +22,7 @@ const Register = () => {
 
         try {
             const response = await axios.post(
-                "http://localhost:3000/users/register",  // Make sure the URL is correct
+                url + "users/register",  // Make sure the URL is correct
                 userData,  // Send data as JSON
                 {
                     headers: {
