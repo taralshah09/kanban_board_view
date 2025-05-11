@@ -22,7 +22,7 @@ const PORT = process.env.PORT || 3000;
 const io = new Server(server, {
   cors: {
     origin: [frontend_url, "http://localhost:5173"],
-    methods: ["GET", "POST"],
+    methods: ["GET", "POST", "PUT", "DELETE"],
     credentials: true,
   },
 });
@@ -41,7 +41,7 @@ app.use(cookieParser());
 app.use(
   cors({
     origin: [frontend_url, "http://localhost:5173"],
-    methods: ["GET", "POST"],
+    methods: ["GET", "POST", "PUT", "DELETE"],
     credentials: true,
   })
 );
