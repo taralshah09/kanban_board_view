@@ -6,7 +6,7 @@ import { useAuth } from '../context/AuthProvider';
 const Login = () => {
   const navigate = useNavigate();
   const [authUser, setAuthUser] = useAuth();
-  let url = import.meta.env.url || "https://kanban-board-view-backend.onrender.com/";
+  let url = import.meta.env.VITE_BACKEND_URL || "https://kanban-board-view-backend.onrender.com/";
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 

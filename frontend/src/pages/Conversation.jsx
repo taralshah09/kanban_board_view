@@ -3,7 +3,6 @@ import React, { useEffect, useRef, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
 import { useAuth } from '../context/AuthProvider';
-import { socket } from '../App';
 
 const Conversation = () => {
     const { id } = useParams();
@@ -21,7 +20,7 @@ const Conversation = () => {
     const [searchUser, setSearchUser] = useState("")
     const [authUser, setAuthUser] = useAuth()
 
-    // let url = import.meta.env.url || "https://kanban-board-view-backend.onrender.com/";
+    // let url = import.meta.env.VITE_BACKEND_URL || "https://kanban-board-view-backend.onrender.com/";
     // let url = "http://localhost:3000/";
     let url = "https://kanban-board-view-backend.onrender.com";
 

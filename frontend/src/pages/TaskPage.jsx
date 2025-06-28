@@ -3,7 +3,6 @@ import { Link, useLocation, useNavigate, useParams } from 'react-router-dom';
 import axios from 'axios';
 import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
-import { socket } from '../App';
 
 
 const TaskPage = () => {
@@ -18,7 +17,7 @@ const TaskPage = () => {
     const location = useLocation();
     const navigate = useNavigate();
     const { conversation } = location.state;
-    let url = import.meta.env.url || "https://kanban-board-view-backend.onrender.com/";
+    let url = import.meta.env.VITE_BACKEND_URL || "https://kanban-board-view-backend.onrender.com/";
 
     useEffect(() => {
         const fetchTask = async () => {

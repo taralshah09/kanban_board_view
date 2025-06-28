@@ -19,7 +19,7 @@ const ConversationHome = () => {
         users: [],
         createdBy: loggedInUser._id,
     });
-    // let url = import.meta.env.url || "https://kanban-board-view-backend.onrender.com/";
+    // let url = import.meta.env.VITE_BACKEND_URL || "https://kanban-board-view-backend.onrender.com/";
     let url = "http://localhost:3000/"
     const navigate = useNavigate();
 
