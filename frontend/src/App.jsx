@@ -16,7 +16,7 @@ function App() {
   const navigate = useNavigate();
   const url = import.meta.env.VITE_BACKEND_URL;
 
-  console.log(url);
+  // console.log(url);
 
   const showNavbar = location.pathname === '/conversation-home' || location.pathname.startsWith('/conversation');
 

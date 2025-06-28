@@ -20,14 +20,12 @@ const Conversation = () => {
     const [searchUser, setSearchUser] = useState("")
     const [authUser, setAuthUser] = useAuth()
 
-    // let url = import.meta.env.VITE_BACKEND_URL || "https://kanban-board-view-backend.onrender.com/";
-    // let url = "http://localhost:3000/";
-    let url = "https://kanban-board-view-backend.onrender.com";
+    let url = import.meta.env.VITE_BACKEND_URL;
 
     useEffect(() => {
         const fetchConversation = async () => {
             try {
-                const res = await axios.get(url + `/conversations/${id}`, { withCredentials: true });
+                const res = await axios.get(url + `conversations/${id}`, { withCredentials: true });
                 setConversation(res.data);
             } catch (error) {
                 console.log(error);

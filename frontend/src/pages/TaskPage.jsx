@@ -17,7 +17,7 @@ const TaskPage = () => {
     const location = useLocation();
     const navigate = useNavigate();
     const { conversation } = location.state;
-    let url = import.meta.env.VITE_BACKEND_URL || "https://kanban-board-view-backend.onrender.com/";
+    let url = import.meta.env.VITE_BACKEND_URL;
 
     useEffect(() => {
         const fetchTask = async () => {
